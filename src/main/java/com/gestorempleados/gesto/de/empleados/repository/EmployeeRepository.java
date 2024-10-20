@@ -1,11 +1,9 @@
 package com.gestorempleados.gesto.de.empleados.repository;
 
 import com.gestorempleados.gesto.de.empleados.model.Employee;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.sql.ClientInfoStatus;
-import java.util.List;
 
-public interface EmployeeRepository extends CrudRepository<Employee,Long> {
+public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
 }

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,7 +36,7 @@ public class Employee {
     private double salary;
 
     @ManyToOne
-    @JoinColumn(name = "department_id", nullable = false)
+    @JoinColumn(name = "department_id")
     private Department department;
 
     @ManyToMany(mappedBy = "employees")
@@ -46,13 +45,12 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     private Set<Evaluation> evaluations;
 
-    public Employee(String firstName, String lastName, String email, LocalDate hiringDate, double salary, Department department) {
+    public Employee(String firstName, String lastName, String email, LocalDate hiringDate, double salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.hiringDate = hiringDate;
         this.salary = salary;
-        this.department = department;
     }
 
     @Override
