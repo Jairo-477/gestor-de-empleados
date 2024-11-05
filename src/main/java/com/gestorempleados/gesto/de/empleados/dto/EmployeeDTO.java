@@ -3,9 +3,11 @@ package com.gestorempleados.gesto.de.empleados.dto;
 import com.gestorempleados.gesto.de.empleados.model.Department;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
+@Setter
 @Getter
 @NoArgsConstructor
 public class EmployeeDTO {
@@ -19,8 +21,6 @@ public class EmployeeDTO {
     private String email;
 
     private LocalDate hiringDate;
-
-    private Department department;
 
     public EmployeeDTO(Long id, String firstName, String lastName, String email, LocalDate hiringDate) {
         this.id = id;
