@@ -24,7 +24,7 @@ public class Evaluation {
     private Employee employee;
 
     @Column(nullable = false)
-    private int calification;
+    private Integer calification;
 
     @Column(nullable = false)
     private String comment;
@@ -32,7 +32,7 @@ public class Evaluation {
     @Column(name = "evaluacion_date", unique = true)
     private LocalDate evaluationDate;
 
-    public Evaluation(Employee employee, int calification, String comment, LocalDate evaluationDate) {
+    public Evaluation(Employee employee, Integer calification, String comment, LocalDate evaluationDate) {
         this.employee = employee;
         this.calification = calification;
         this.comment = comment;
