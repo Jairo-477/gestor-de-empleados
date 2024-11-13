@@ -7,6 +7,8 @@ import com.gestorempleados.gesto.de.empleados.model.Proyect;
 import com.gestorempleados.gesto.de.empleados.service.EmployeeService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,9 +39,9 @@ public class EmployeeRestController {
     }
 
     @GetMapping
-    public ResponseEntity<Object> getAllEmployees(){
+    public ResponseEntity<Object> getAllEmployees(Pageable pageable){
 
-        List<Employee> employees = employeeService.getAllEmployees();
+        Page<Employee> employees = employeeService.getAllEmployees(pageable);
 
         if (employees.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -57,10 +59,12 @@ public class EmployeeRestController {
         }
     }
 
+
+
     @PatchMapping("/{id}")
-    public ResponseEntity<Object> putchEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+    public ResponseEntity<Object> patchEmployee(@PathVariable Long id, @RequestBody Employee employee) {
         try {
-            employeeService.putchEmployee(id, employee);
+            employeeService.patchEmployee(id, employee);
             return ResponseEntity.ok().build();
         }catch (EntityNotFoundException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -85,5 +89,10 @@ public class EmployeeRestController {
         }catch (EntityNotFoundException e){
             return  ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/salary/{salary}")
+    public List<Employee> FindBySalaryGreaterThan(@PathVariable Double salary){
+        return employeeService.findBySalaryGreaterThan(salary);
     }
 }

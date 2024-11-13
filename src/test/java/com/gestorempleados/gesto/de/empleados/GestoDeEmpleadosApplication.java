@@ -12,8 +12,5 @@ public class GestoDeEmpleadosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GestoDeEmpleadosApplication.class, args);
 	}
-
-
-
-
+	
 }
