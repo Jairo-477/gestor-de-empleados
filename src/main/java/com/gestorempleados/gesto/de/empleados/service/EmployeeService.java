@@ -1,9 +1,10 @@
 package com.gestorempleados.gesto.de.empleados.service;
 
-import com.gestorempleados.gesto.de.empleados.dto.EmployeeDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
-import com.gestorempleados.gesto.de.empleados.model.Proyect;
+import com.gestorempleados.gesto.de.empleados.model.Project;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,17 +17,17 @@ public interface EmployeeService {
 
     List<Employee> findBySalaryGreaterThan(Double salary);
 
-    Employee createEmployee (Employee employee);
+    EmployeeOutputDTO createEmployee (EmployeeInputDTO employeeInputDTO);
 
-    EmployeeDTO getEmployee(Long id);
+    EmployeeOutputDTO getEmployee(Long id);
 
     void deleteEmployee(Long id);
 
-    Page<Employee> getAllEmployees(Pageable pageable);
+    Page<EmployeeOutputDTO> getAllEmployees(Pageable pageable);
 
     void patchEmployee(Long id, Employee employee);
 
-    void addProyect (Long id, Proyect proyect);
+    void addProject (Long id, Project project);
 
     Set<Evaluation> getEvaluations (Long id);
 }

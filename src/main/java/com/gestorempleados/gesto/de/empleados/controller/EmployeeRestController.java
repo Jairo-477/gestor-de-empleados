@@ -1,9 +1,10 @@
 package com.gestorempleados.gesto.de.empleados.controller;
 
-import com.gestorempleados.gesto.de.empleados.dto.EmployeeDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
-import com.gestorempleados.gesto.de.empleados.model.Proyect;
+import com.gestorempleados.gesto.de.empleados.model.Project;
 import com.gestorempleados.gesto.de.empleados.service.EmployeeService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,19 +30,19 @@ public class EmployeeRestController {
 
 
     @PostMapping
-    public Employee createEmployee(@RequestBody Employee employee){
-        return employeeService.createEmployee(employee);
+    public Employee createEmployee(@RequestBody EmployeeInputDTO employeeInputDTO){
+        return employeeService.createEmployee(employeeInputDTO);
     }
 
     @GetMapping("/{id}")
-    public EmployeeDTO getEmployee(@PathVariable Long id){
+    public EmployeeOutputDTO getEmployee(@PathVariable Long id){
         return employeeService.getEmployee(id);
     }
 
     @GetMapping
     public ResponseEntity<Object> getAllEmployees(Pageable pageable){
 
-        Page<Employee> employees = employeeService.getAllEmployees(pageable);
+        Page<EmployeeOutputDTO> employees = employeeService.getAllEmployees(pageable);
 
         if (employees.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -71,10 +72,10 @@ public class EmployeeRestController {
         }
     }
 
-    @PatchMapping("/addProyect/{id}")
-    public ResponseEntity<Object> addProyect (Long id, Proyect proyect){
+    @PatchMapping("/addProject/{id}")
+    public ResponseEntity<Object> addProject (Long id, Project project){
         try {
-            employeeService.addProyect(id,proyect);
+            employeeService.addProject(id,project);
             return ResponseEntity.ok().build();
         }catch (EntityNotFoundException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

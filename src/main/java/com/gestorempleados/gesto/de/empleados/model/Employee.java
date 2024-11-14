@@ -40,7 +40,7 @@ public class Employee {
     private Department department;
 
     @ManyToMany(mappedBy = "employees")
-    private Set<Proyect> proyects = new HashSet<>();
+    private Set<Project> projects = new HashSet<>();
 
     @OneToMany(mappedBy = "employee")
     private Set<Evaluation> evaluations;

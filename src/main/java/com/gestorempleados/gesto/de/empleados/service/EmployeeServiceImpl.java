@@ -1,10 +1,11 @@
 package com.gestorempleados.gesto.de.empleados.service;
 
-import com.gestorempleados.gesto.de.empleados.dto.EmployeeDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.mapper.EmployeeMapper;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
-import com.gestorempleados.gesto.de.empleados.model.Proyect;
+import com.gestorempleados.gesto.de.empleados.model.Project;
 import com.gestorempleados.gesto.de.empleados.repository.EmployeeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee createEmployee (Employee employee){
-        return employeeRepository.save(employee);
+    public EmployeeOutputDTO createEmployee (EmployeeInputDTO employeeInputDTO){
+        Employee employee = employeeMapper.toEntity(employeeInputDTO);
+        Employee savedEmployee = employeeRepository.save(employee);
+        return employeeMapper.toDto(employee);
     }
 
     @Override
-    public EmployeeDTO getEmployee(Long id){
+    public EmployeeOutputDTO getEmployee(Long id){
         return employeeRepository.findById(id)
                 .map(employeeMapper::toDto)
                 .orElse(null);
@@ -48,8 +51,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Page<Employee> getAllEmployees(Pageable pageable){
-        return employeeRepository.findAll(pageable);
+    public Page<EmployeeOutputDTO> getAllEmployees(Pageable pageable){
+
+        Page<Employee> employees = employeeRepository.findAll(pageable);
+
+        return employees.map(employeeMapper::toDto);
     }
 
     @Override
@@ -78,14 +84,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void addProyect (Long id, Proyect proyect){
+    public void addProject (Long id, Project project){
 
         Employee existingEmployee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
 
-        Proyect proyect1 = new Proyect(proyect.getName(),proyect.getDescription(),proyect.getRegistrationDate());
+        Project project1 = new Project(project.getName(),project.getDescription(),project.getRegistrationDate());
 
-        existingEmployee.getProyects().add(proyect1);
+        existingEmployee.getProjects().add(project1);
 
         employeeRepository.save(existingEmployee);
     }

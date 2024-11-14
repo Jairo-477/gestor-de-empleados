@@ -1,6 +1,5 @@
-package com.gestorempleados.gesto.de.empleados.dto;
+package com.gestorempleados.gesto.de.empleados.dto.input;
 
-import com.gestorempleados.gesto.de.empleados.model.Department;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +9,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @NoArgsConstructor
-public class EmployeeDTO {
+public class EmployeeOutputDTO {
 
     private  Long id;
 
@@ -22,7 +21,7 @@ public class EmployeeDTO {
 
     private LocalDate hiringDate;
 
-    public EmployeeDTO(Long id, String firstName, String lastName, String email, LocalDate hiringDate) {
+    public EmployeeOutputDTO(Long id, String firstName, String lastName, String email, LocalDate hiringDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

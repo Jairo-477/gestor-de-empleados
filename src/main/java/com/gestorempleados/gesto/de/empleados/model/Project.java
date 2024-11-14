@@ -13,8 +13,8 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "proyects")
-public class Proyect {
+@Table(name = "projects")
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +35,7 @@ public class Proyect {
             inverseJoinColumns = @JoinColumn(name = "employee_id"))
     private Set<Employee> employees = new HashSet<>();
 
-    public Proyect(String name, String description, LocalDate registrationDate) {
+    public Project(String name, String description, LocalDate registrationDate) {
         this.name = name;
         this.description = description;
         this.registrationDate = registrationDate;
