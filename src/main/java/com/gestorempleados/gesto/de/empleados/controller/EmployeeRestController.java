@@ -30,7 +30,7 @@ public class EmployeeRestController {
 
 
     @PostMapping
-    public Employee createEmployee(@RequestBody EmployeeInputDTO employeeInputDTO){
+    public EmployeeOutputDTO createEmployee(@RequestBody EmployeeInputDTO employeeInputDTO){
         return employeeService.createEmployee(employeeInputDTO);
     }
 
