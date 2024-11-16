@@ -30,8 +30,8 @@ public class Project {
     private LocalDate registrationDate;
 
     @ManyToMany
-    @JoinTable(name = "proyect_employee",
-            joinColumns = @JoinColumn(name = "proyect_id"),
+    @JoinTable(name = "project_employee",
+            joinColumns = @JoinColumn(name = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "employee_id"))
     private Set<Employee> employees = new HashSet<>();
 

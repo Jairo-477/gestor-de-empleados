@@ -97,6 +97,8 @@ public class ProjectServiceImpl implements ProjectService {
                 .orElseThrow(EntityNotFoundException::new);
 
         project.getEmployees().add(employee);
+
+        projectRepository.save(project);
     }
 
     @Override

@@ -11,6 +11,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ProjectOutputDTO {
 
+    private Long id;
+
     private String name;
 
     private String description;

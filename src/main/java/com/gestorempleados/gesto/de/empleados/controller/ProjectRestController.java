@@ -2,10 +2,10 @@ package com.gestorempleados.gesto.de.empleados.controller;
 
 import com.gestorempleados.gesto.de.empleados.dto.input.ProjectOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.ProjectInputDTO;
-import com.gestorempleados.gesto.de.empleados.model.Project;
 import com.gestorempleados.gesto.de.empleados.service.ProjectService;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.dao.DataIntegrityViolationException;
+import org.hibernate.MappingException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -65,6 +65,53 @@ public class ProjectRestController {
             return ResponseEntity.ok(projectOutput);
         }catch (EntityNotFoundException ex){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteProject(@PathVariable Long id){
+        try {
+            projectService.deleteProject(id);
+            return ResponseEntity.ok("Project " + id + " was deleted");
+        }catch (EmptyResultDataAccessException ex){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("404 Not Found");
+        }catch (IllegalArgumentException ex){
+            return  ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("the data entered was null");
+        }
+    }
+
+    @PatchMapping("/{projectId}/{employeeId}")
+    public ResponseEntity<Object> addEmployeeToProject(@PathVariable Long projectId,@PathVariable Long employeeId){
+        try {
+            projectService.addEmployeeToProject(projectId,employeeId);
+            return ResponseEntity.ok("Employee " + employeeId + " has been added to Project " + projectId);
+        }catch (EntityNotFoundException ex){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("404 Not Found");
+        }catch (IllegalArgumentException ex){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("the data entered was null");
+        }
+    }
+
+    @GetMapping("/getEmployees/{id}")
+    public ResponseEntity<Object> getEmployeesByProject(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(projectService.getEmployeesByProject(id));
+
+        }catch(EntityNotFoundException ex){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("404 Not Found");
+
+        }catch (MappingException ex){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Mapping error: Invalid data format for entity");
+
+        }catch (IllegalArgumentException ex){
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+                    .body("the data entered was null");
         }
     }
 }
