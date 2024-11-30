@@ -65,6 +65,13 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public ProjectOutputDTO patchProject(Long id, ProjectInputDTO projectInputDTO) {
 
+        if (id == null){
+            throw new IllegalArgumentException("Project input data cannot be null.");
+        }
+        if (projectInputDTO == null){
+            throw new IllegalArgumentException("Project input data cannot be null.");
+        }
+
         Project existingProject = projectRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
 
@@ -85,11 +92,24 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void deleteProject(Long id) {
+
+        if (id == null){
+            throw new IllegalArgumentException("the data entered was null");
+        }
+
+        if (!projectRepository.existsById(id)){
+            throw new EntityNotFoundException();
+        }
         projectRepository.deleteById(id);
     }
 
     @Override
     public void addEmployeeToProject(Long projectId, Long employeeId) {
+
+        if (projectId == null || employeeId == null){
+            throw new IllegalArgumentException("Project ID o employee ID cannot be null.");
+
+        }
 
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(EntityNotFoundException::new);
