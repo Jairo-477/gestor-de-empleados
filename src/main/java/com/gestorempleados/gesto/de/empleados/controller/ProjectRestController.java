@@ -98,20 +98,7 @@ public class ProjectRestController {
 
     @GetMapping("/getEmployees/{id}")
     public ResponseEntity<Object> getEmployeesByProject(@PathVariable Long id) {
-        try {
-            return ResponseEntity.ok(projectService.getEmployeesByProject(id));
 
-        }catch(EntityNotFoundException ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("404 Not Found");
-
-        }catch (MappingException ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Mapping error: Invalid data format for entity");
-
-        }catch (IllegalArgumentException ex){
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
-                    .body("the data entered was null");
-        }
+        return ResponseEntity.ok(projectService.getEmployeesByProject(id));
     }
 }

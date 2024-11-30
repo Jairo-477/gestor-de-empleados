@@ -10,6 +10,7 @@ import com.gestorempleados.gesto.de.empleados.model.Project;
 import com.gestorempleados.gesto.de.empleados.repository.EmployeeRepository;
 import com.gestorempleados.gesto.de.empleados.repository.ProjectRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.hibernate.MappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -58,7 +59,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         return projectRepository.findById(id)
                 .map(projectMapper::toDTO)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException("Project with id " + id + " not found"));
     }
 
     @Override
@@ -104,8 +105,12 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<EmployeeOutputDTO> getEmployeesByProject(Long id) {
 
+        if (id == null){
+            throw new IllegalArgumentException("Project ID cannot be null.");
+        }
+
         Project project = projectRepository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException("Project with id " + id + " not found"));
 
         return project.getEmployees().stream()
                 .map(employeeMapper::toDto)
