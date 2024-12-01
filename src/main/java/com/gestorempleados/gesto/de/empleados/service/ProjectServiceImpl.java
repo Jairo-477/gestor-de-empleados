@@ -120,10 +120,10 @@ public class ProjectServiceImpl implements ProjectService {
         }
 
         Project project = projectRepository.findById(projectId)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException("Project with ID " + projectId + " not found"));
 
         Employee employee = employeeRepository.findById(employeeId)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + projectId + " not found"));
 
         project.getEmployees().add(employee);
 

@@ -51,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void deleteEmployee(Long id){
+        public void deleteEmployee(Long id){
 
         if (id == null){
             throw new IllegalArgumentException("Employee ID cannot be null.");
@@ -120,6 +120,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> findBySalaryGreaterThan(Double salary){
+
+        if (salary == null){
+            throw new IllegalArgumentException("The value cannot be null");
+        }
+
         return employeeRepository.findBySalaryGreaterThan(salary);
     };
 }

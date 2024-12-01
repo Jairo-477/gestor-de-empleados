@@ -50,10 +50,10 @@ public class EmployeeRestController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEmployee(@PathVariable Long id){
+    public ResponseEntity<String> deleteEmployee(@PathVariable Long id){
 
         employeeService.deleteEmployee(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Employee " + id + " was eliminated");
     }
 
     @PatchMapping("/{id}")
@@ -64,12 +64,9 @@ public class EmployeeRestController {
 
     @GetMapping("/evaluations/{id}")
     public ResponseEntity<Set<Evaluation>> getEvaluations(@PathVariable Long id){
-        try {
-            Set<Evaluation> evaluations = employeeService.getEvaluations(id);
-            return ResponseEntity.ok(evaluations);
-        }catch (EntityNotFoundException e){
-            return  ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+
+        Set<Evaluation> evaluations = employeeService.getEvaluations(id);
+        return ResponseEntity.ok(evaluations);
     }
 
     @GetMapping("/salary/{salary}")
