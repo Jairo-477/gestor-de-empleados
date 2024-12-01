@@ -47,6 +47,10 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<ProjectOutputDTO> getAllProjects(Sort sort) {
 
+        if (sort == null){
+            throw new IllegalArgumentException("Sort parameter cannot be null.");
+        }
+
         List<Project> projectsEntity = projectRepository.findAll(sort);
 
         return projectsEntity.stream()
@@ -57,6 +61,10 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public ProjectOutputDTO getProject(Long id) {
 
+        if(id == null){
+            throw new IllegalArgumentException("Project ID cannot be null.");
+        }
+
         return projectRepository.findById(id)
                 .map(projectMapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Project with id " + id + " not found"));
@@ -66,7 +74,7 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectOutputDTO patchProject(Long id, ProjectInputDTO projectInputDTO) {
 
         if (id == null){
-            throw new IllegalArgumentException("Project input data cannot be null.");
+            throw new IllegalArgumentException("Project ID cannot be null.");
         }
         if (projectInputDTO == null){
             throw new IllegalArgumentException("Project input data cannot be null.");
@@ -98,7 +106,7 @@ public class ProjectServiceImpl implements ProjectService {
         }
 
         if (!projectRepository.existsById(id)){
-            throw new EntityNotFoundException();
+            throw new EntityNotFoundException("Project with ID " + id + " not found");
         }
         projectRepository.deleteById(id);
     }

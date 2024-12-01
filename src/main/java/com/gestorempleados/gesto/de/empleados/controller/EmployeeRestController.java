@@ -1,6 +1,7 @@
 package com.gestorempleados.gesto.de.empleados.controller;
 
 import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.ProjectOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
@@ -31,55 +32,34 @@ public class EmployeeRestController {
 
     @PostMapping
     public EmployeeOutputDTO createEmployee(@RequestBody EmployeeInputDTO employeeInputDTO){
+
         return employeeService.createEmployee(employeeInputDTO);
     }
 
     @GetMapping("/{id}")
     public EmployeeOutputDTO getEmployee(@PathVariable Long id){
+
         return employeeService.getEmployee(id);
     }
 
     @GetMapping
-    public ResponseEntity<Object> getAllEmployees(Pageable pageable){
+    public ResponseEntity<Page<EmployeeOutputDTO>> getAllEmployees(Pageable pageable){
 
         Page<EmployeeOutputDTO> employees = employeeService.getAllEmployees(pageable);
-
-        if (employees.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
         return ResponseEntity.ok(employees);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id){
-        try {
-            employeeService.deleteEmployee(id);
-            return ResponseEntity.ok().build();
-        }catch (EntityNotFoundException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+
+        employeeService.deleteEmployee(id);
+        return ResponseEntity.ok().build();
     }
-
-
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Object> patchEmployee(@PathVariable Long id, @RequestBody Employee employee) {
-        try {
-            employeeService.patchEmployee(id, employee);
-            return ResponseEntity.ok().build();
-        }catch (EntityNotFoundException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-    }
+    public ResponseEntity<EmployeeOutputDTO> patchEmployee(@PathVariable Long id, @RequestBody EmployeeInputDTO employeeInputDTO) {
 
-    @PatchMapping("/addProject/{id}")
-    public ResponseEntity<Object> addProject (Long id, Project project){
-        try {
-            employeeService.addProject(id,project);
-            return ResponseEntity.ok().build();
-        }catch (EntityNotFoundException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+        return ResponseEntity.ok().body(employeeService.patchEmployee(id, employeeInputDTO));
     }
 
     @GetMapping("/evaluations/{id}")

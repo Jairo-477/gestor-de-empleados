@@ -25,9 +25,7 @@ public interface EmployeeService {
 
     Page<EmployeeOutputDTO> getAllEmployees(Pageable pageable);
 
-    void patchEmployee(Long id, Employee employee);
-
-    void addProject (Long id, Project project);
+    EmployeeOutputDTO patchEmployee(Long id, EmployeeInputDTO employeeInputDTO);
 
     Set<Evaluation> getEvaluations (Long id);
 }

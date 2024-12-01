@@ -25,40 +25,27 @@ public class ProjectRestController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createProject(@RequestBody ProjectInputDTO projectInputDTO) {
-        try{
-            return ResponseEntity.status(HttpStatus.CREATED).body(projectService.createProject(projectInputDTO));
-        }catch(IllegalArgumentException ex){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Invalid project data provided");
-        }catch (HttpMessageNotReadableException ex){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Malformed JSON request.");
-        }
+    public ResponseEntity<ProjectOutputDTO> createProject(@RequestBody ProjectInputDTO projectInputDTO) {
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(projectService.createProject(projectInputDTO));
     }
 
     @GetMapping
-    public ResponseEntity<Object> getAllProjects(Sort sort){
+    public ResponseEntity<List<ProjectOutputDTO>> getAllProjects(Sort sort){
 
         List<ProjectOutputDTO> projectsOutput = projectService.getAllProjects(sort);
-
         return ResponseEntity.ok(projectsOutput);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getProject(@PathVariable Long id) {
+    public ResponseEntity<ProjectOutputDTO> getProject(@PathVariable Long id) {
 
-        try {
-            ProjectOutputDTO projectOutput = projectService.getProject(id);
-            return ResponseEntity.ok(projectOutput);
-        }catch (EntityNotFoundException ex){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Project with ID " + id + " not found");
-        }
+        ProjectOutputDTO projectOutput = projectService.getProject(id);
+        return ResponseEntity.ok(projectOutput);
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Object> patchProject(@PathVariable Long id, @RequestBody ProjectInputDTO projectInputDTO) {
+    public ResponseEntity<ProjectOutputDTO> patchProject(@PathVariable Long id, @RequestBody ProjectInputDTO projectInputDTO) {
 
         ProjectOutputDTO projectOutput = projectService.patchProject(id, projectInputDTO);
         return ResponseEntity.ok(projectOutput);

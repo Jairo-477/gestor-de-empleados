@@ -2,6 +2,7 @@ package com.gestorempleados.gesto.de.empleados.service;
 
 import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.ProjectInputDTO;
 import com.gestorempleados.gesto.de.empleados.mapper.EmployeeMapper;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
@@ -11,6 +12,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,21 +33,32 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeOutputDTO createEmployee (EmployeeInputDTO employeeInputDTO){
         Employee employee = employeeMapper.toEntity(employeeInputDTO);
-        Employee savedEmployee = employeeRepository.save(employee);
+        employeeRepository.save(employee);
+
         return employeeMapper.toDto(employee);
     }
 
     @Override
     public EmployeeOutputDTO getEmployee(Long id){
+
+        if (id == null){
+            throw new IllegalArgumentException("Employee ID cannot be null.");
+        }
+
         return employeeRepository.findById(id)
                 .map(employeeMapper::toDto)
-                .orElse(null);
+                .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
     }
 
     @Override
     public void deleteEmployee(Long id){
+
+        if (id == null){
+            throw new IllegalArgumentException("Employee ID cannot be null.");
+        }
+
         if (!employeeRepository.existsById(id)){
-            throw new EntityNotFoundException();
+            throw new EntityNotFoundException("Employee with ID " + id + " not found");
         }
         employeeRepository.deleteById(id);
     }
@@ -59,45 +72,45 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void patchEmployee(Long id, Employee employee){
+    public EmployeeOutputDTO patchEmployee(Long id, EmployeeInputDTO employeeInputDTO){
+
+        if (id == null){
+            throw new IllegalArgumentException("Employee ID cannot be null.");
+        }
+        if (employeeInputDTO == null){
+            throw new IllegalArgumentException("Employee input data cannot be null.");
+        }
 
         Employee existingEmployee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
 
-        if (!(employee.getFirstName() == null)){
-            existingEmployee.setFirstName(employee.getFirstName());
+        if (!(employeeInputDTO.getFirstName() == null)){
+            existingEmployee.setFirstName(employeeInputDTO.getFirstName());
         }
-        if (!(employee.getLastName() == null)){
-            existingEmployee.setLastName(employee.getLastName());
+        if (!(employeeInputDTO.getLastName() == null)){
+            existingEmployee.setLastName(employeeInputDTO.getLastName());
         }
-        if (!(employee.getEmail() == null)){
-            existingEmployee.setEmail(employee.getEmail());
+        if (!(employeeInputDTO.getEmail() == null)){
+            existingEmployee.setEmail(employeeInputDTO.getEmail());
         }
-        if (!(employee.getSalary() == 0)){
-            existingEmployee.setSalary(employee.getSalary());
+        if (!(employeeInputDTO.getSalary() == 0)){
+            existingEmployee.setSalary(employeeInputDTO.getSalary());
         }
-        if (!(employee.getDepartment() == null)){
-            existingEmployee.setDepartment(employee.getDepartment());
+        if (!(employeeInputDTO.getDepartment() == null)){
+            existingEmployee.setDepartment(employeeInputDTO.getDepartment());
         }
 
         employeeRepository.save(existingEmployee);
-    }
 
-    @Override
-    public void addProject (Long id, Project project){
-
-        Employee existingEmployee = employeeRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
-
-        Project project1 = new Project(project.getName(),project.getDescription(),project.getRegistrationDate());
-
-        existingEmployee.getProjects().add(project1);
-
-        employeeRepository.save(existingEmployee);
+        return employeeMapper.toDto(existingEmployee);
     }
 
     @Override
     public Set<Evaluation> getEvaluations (Long id){
+
+        if (id == null){
+            throw new IllegalArgumentException("Employee ID cannot be null.");
+        }
 
         Employee existingEmployee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
