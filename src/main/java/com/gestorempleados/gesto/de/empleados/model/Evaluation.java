@@ -24,17 +24,17 @@ public class Evaluation {
     private Employee employee;
 
     @Column(nullable = false)
-    private Integer calification;
+    private Integer qualification;
 
     @Column(nullable = false)
     private String comment;
 
-    @Column(name = "evaluacion_date", unique = true)
+    @Column(name = "evaluation_date")
     private LocalDate evaluationDate;
 
-    public Evaluation(Employee employee, Integer calification, String comment, LocalDate evaluationDate) {
+    public Evaluation(Employee employee, Integer qualification, String comment, LocalDate evaluationDate) {
         this.employee = employee;
-        this.calification = calification;
+        this.qualification = qualification;
         this.comment = comment;
         this.evaluationDate = evaluationDate;
     }
@@ -44,7 +44,7 @@ public class Evaluation {
         return "Evaluation{" +
                 "id=" + id +
                 ", employee=" + employee +
-                ", calification=" + calification +
+                ", qualification=" + qualification +
                 ", comment='" + comment + '\'' +
                 ", evaluationDate=" + evaluationDate +
                 '}';

@@ -10,7 +10,6 @@ import com.gestorempleados.gesto.de.empleados.model.Project;
 import com.gestorempleados.gesto.de.empleados.repository.EmployeeRepository;
 import com.gestorempleados.gesto.de.empleados.repository.ProjectRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.hibernate.MappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

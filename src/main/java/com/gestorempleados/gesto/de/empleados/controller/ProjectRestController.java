@@ -5,6 +5,7 @@ import com.gestorempleados.gesto.de.empleados.dto.input.ProjectOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.ProjectInputDTO;
 import com.gestorempleados.gesto.de.empleados.service.ProjectService;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ public class ProjectRestController {
 
     private final ProjectService projectService;
 
+    @Autowired
     public ProjectRestController(ProjectService projectService){
         this.projectService = projectService;
     }

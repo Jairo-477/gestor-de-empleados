@@ -2,17 +2,14 @@ package com.gestorempleados.gesto.de.empleados.service;
 
 import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.ProjectInputDTO;
 import com.gestorempleados.gesto.de.empleados.mapper.EmployeeMapper;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
-import com.gestorempleados.gesto.de.empleados.model.Project;
 import com.gestorempleados.gesto.de.empleados.repository.EmployeeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -84,19 +81,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee existingEmployee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
 
-        if (!(employeeInputDTO.getFirstName() == null)){
+        if (employeeInputDTO.getFirstName() != null){
             existingEmployee.setFirstName(employeeInputDTO.getFirstName());
         }
-        if (!(employeeInputDTO.getLastName() == null)){
+        if (employeeInputDTO.getLastName() != null){
             existingEmployee.setLastName(employeeInputDTO.getLastName());
         }
-        if (!(employeeInputDTO.getEmail() == null)){
+        if (employeeInputDTO.getEmail() != null){
             existingEmployee.setEmail(employeeInputDTO.getEmail());
         }
-        if (!(employeeInputDTO.getSalary() == 0)){
+        if (employeeInputDTO.getSalary() != 0){
             existingEmployee.setSalary(employeeInputDTO.getSalary());
         }
-        if (!(employeeInputDTO.getDepartment() == null)){
+        if (employeeInputDTO.getDepartment() != null){
             existingEmployee.setDepartment(employeeInputDTO.getDepartment());
         }
 

@@ -9,25 +9,20 @@ import org.springframework.stereotype.Component;
 public class ProjectMapper {
 
     public ProjectOutputDTO toDTO (Project project){
-
-        ProjectOutputDTO projectOutputDTO = new ProjectOutputDTO();
-
-        projectOutputDTO.setId(project.getId());
-        projectOutputDTO.setName(project.getName());
-        projectOutputDTO.setDescription(project.getDescription());
-        projectOutputDTO.setRegistrationDate(project.getRegistrationDate());
-
-        return projectOutputDTO;
+        return new ProjectOutputDTO(
+                project.getId(),
+                project.getName(),
+                project.getDescription(),
+                project.getRegistrationDate()
+        );
     }
 
     public Project toEntity (ProjectInputDTO projectInputDTO){
 
-        Project project = new Project();
-
-        project.setName(projectInputDTO.getName());
-        project.setDescription(projectInputDTO.getDescription());
-        project.setRegistrationDate(projectInputDTO.getRegistrationDate());
-
-        return project;
+        return new Project(
+                projectInputDTO.getName(),
+                projectInputDTO.getDescription(),
+                projectInputDTO.getRegistrationDate()
+        );
     }
 }

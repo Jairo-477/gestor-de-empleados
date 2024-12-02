@@ -19,7 +19,8 @@ public class ProjectOutputDTO {
 
     private LocalDate registrationDate;
 
-    public ProjectOutputDTO(String name, String description, LocalDate registrationDate) {
+    public ProjectOutputDTO(Long id,String name, String description, LocalDate registrationDate) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.registrationDate = registrationDate;
