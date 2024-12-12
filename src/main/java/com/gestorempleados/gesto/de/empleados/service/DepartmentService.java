@@ -20,4 +20,6 @@ public interface DepartmentService {
     void deleteDepartment(Long id);
 
     List<EmployeeOutputDTO> getEmployeesByDepartment(Long id);
+
+    void addEmployeeInDepartment(Long employeeId, Long departmentId);
 }

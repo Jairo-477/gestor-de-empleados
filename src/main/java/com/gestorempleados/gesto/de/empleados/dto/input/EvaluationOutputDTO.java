@@ -12,13 +12,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class EvaluationOutputDTO {
 
-    private Employee employee;
+    private Long evaluationId;
+    private Long employeeId;
     private Integer qualification;
     private String comment;
     private LocalDate evaluationDate;
 
-    public EvaluationOutputDTO(Employee employee, Integer qualification, String comment, LocalDate evaluationDate) {
-        this.employee = employee;
+    public EvaluationOutputDTO(Long evaluationId,Long employeeId, Integer qualification, String comment, LocalDate evaluationDate) {
+        this.evaluationId = evaluationId;
+        this.employeeId = employeeId;
         this.qualification = qualification;
         this.comment = comment;
         this.evaluationDate = evaluationDate;

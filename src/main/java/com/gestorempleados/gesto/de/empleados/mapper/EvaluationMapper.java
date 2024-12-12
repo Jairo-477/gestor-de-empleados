@@ -11,7 +11,8 @@ public class EvaluationMapper {
     public EvaluationOutputDTO toDto(Evaluation evaluation){
 
         return new EvaluationOutputDTO(
-                evaluation.getEmployee(),
+                evaluation.getId(),
+                evaluation.getEmployee().getId(),
                 evaluation.getQualification(),
                 evaluation.getComment(),
                 evaluation.getEvaluationDate()

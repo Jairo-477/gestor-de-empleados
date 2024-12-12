@@ -3,7 +3,9 @@ package com.gestorempleados.gesto.de.empleados.service;
 import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationInputDTO;
 import com.gestorempleados.gesto.de.empleados.mapper.EvaluationMapper;
+import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
+import com.gestorempleados.gesto.de.empleados.repository.EmployeeRepository;
 import com.gestorempleados.gesto.de.empleados.repository.EvaluationRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Sort;
@@ -17,16 +19,27 @@ public class EvaluationServiceImpl implements EvaluationService{
 
     private final EvaluationRepository evaluationRepository;
     private final EvaluationMapper evaluationMapper;
+    private final EmployeeRepository employeeRepository;
 
-    public EvaluationServiceImpl(EvaluationRepository evaluationRepository, EvaluationMapper evaluationMapper){
+    public EvaluationServiceImpl(EvaluationRepository evaluationRepository, EvaluationMapper evaluationMapper
+            , EmployeeRepository employeeRepository){
         this.evaluationRepository = evaluationRepository;
         this.evaluationMapper = evaluationMapper;
+        this.employeeRepository = employeeRepository;
     }
 
     @Override
     public EvaluationOutputDTO createEvaluation(EvaluationInputDTO evaluationInputDTO) {
 
-        Evaluation evaluation = evaluationMapper.toEntity(evaluationInputDTO);
+        Employee employee = employeeRepository.findById(evaluationInputDTO.getEmployee().getId())
+                .orElseThrow(()-> new EntityNotFoundException("Employee not found with ID: " + evaluationInputDTO.getEmployee().getId()));
+
+        Evaluation evaluation = new Evaluation(
+                employee,evaluationInputDTO.getQualification(),
+                evaluationInputDTO.getComment(),
+                evaluationInputDTO.getEvaluationDate()
+        );
+
         evaluationRepository.save(evaluation);
 
         return evaluationMapper.toDto(evaluation);
@@ -70,6 +83,7 @@ public class EvaluationServiceImpl implements EvaluationService{
 
         Evaluation existingEvaluation = evaluationRepository.findById(id)
                 .orElseThrow(()-> new EntityNotFoundException("Evaluation with ID " + id + " not found"));
+
 
         if (evaluationInputDTO.getEmployee() != null) {
             existingEvaluation.setEmployee(evaluationInputDTO.getEmployee());

@@ -1,8 +1,10 @@
 package com.gestorempleados.gesto.de.empleados.service;
 
 import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.mapper.EmployeeMapper;
+import com.gestorempleados.gesto.de.empleados.mapper.EvaluationMapper;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
 import com.gestorempleados.gesto.de.empleados.repository.EmployeeRepository;
@@ -14,17 +16,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
+    private final EvaluationMapper evaluationMapper;
 
     @Autowired
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper){
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper, EvaluationMapper evaluationMapper){
         this.employeeRepository = employeeRepository;
         this.employeeMapper = employeeMapper;
+        this.evaluationMapper = evaluationMapper;
     }
 
     @Override
@@ -103,7 +108,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Set<Evaluation> getEvaluations (Long id){
+    public Set<EvaluationOutputDTO> getEvaluations (Long id){
 
         if (id == null){
             throw new IllegalArgumentException("Employee ID cannot be null.");
@@ -112,7 +117,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee existingEmployee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
 
-        return existingEmployee.getEvaluations();
+        Set<Evaluation> evaluations = existingEmployee.getEvaluations();
+
+        return evaluations.stream().map(evaluationMapper::toDto).collect(Collectors.toSet());
     }
 
     @Override

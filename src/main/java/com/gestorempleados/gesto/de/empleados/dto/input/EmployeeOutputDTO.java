@@ -1,5 +1,6 @@
 package com.gestorempleados.gesto.de.empleados.dto.input;
 
+import com.gestorempleados.gesto.de.empleados.model.Department;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,11 +22,14 @@ public class EmployeeOutputDTO {
 
     private LocalDate hiringDate;
 
-    public EmployeeOutputDTO(Long id, String firstName, String lastName, String email, LocalDate hiringDate) {
+    private DepartmentOutputDTO department;
+
+    public EmployeeOutputDTO(Long id, String firstName, String lastName, String email, LocalDate hiringDate, DepartmentOutputDTO department) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.hiringDate = hiringDate;
+        this.department = department;
     }
 }

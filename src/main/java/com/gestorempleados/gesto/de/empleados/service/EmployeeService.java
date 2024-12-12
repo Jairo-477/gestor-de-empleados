@@ -1,6 +1,7 @@
 package com.gestorempleados.gesto.de.empleados.service;
 
 import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
@@ -27,5 +28,5 @@ public interface EmployeeService {
 
     EmployeeOutputDTO patchEmployee(Long id, EmployeeInputDTO employeeInputDTO);
 
-    Set<Evaluation> getEvaluations (Long id);
+    Set<EvaluationOutputDTO> getEvaluations (Long id);
 }

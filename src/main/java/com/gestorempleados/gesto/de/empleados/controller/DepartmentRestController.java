@@ -31,9 +31,7 @@ public class DepartmentRestController {
     @GetMapping
     public ResponseEntity<List<DepartmentOutputDTO>>  getAllDepartments(Sort sort) {
 
-        List<DepartmentOutputDTO> departments = departmentService.getAllDepartments(sort);
-
-        return ResponseEntity.ok(departments);
+        return ResponseEntity.ok(departmentService.getAllDepartments(sort));
     }
 
     @GetMapping("/{id}")
@@ -59,5 +57,12 @@ public class DepartmentRestController {
     public ResponseEntity<List<EmployeeOutputDTO>> getEmployeesByDepartment(@PathVariable Long id){
 
         return ResponseEntity.ok(departmentService.getEmployeesByDepartment(id));
+    }
+
+    @PatchMapping("/{employeeId}/{departmentId}")
+    public ResponseEntity<String> addEmployeeInDepartment(@PathVariable Long employeeId,@PathVariable Long departmentId) {
+
+        departmentService.addEmployeeInDepartment(employeeId,departmentId);
+        return ResponseEntity.ok("Employee " + employeeId + " was assigned to department " + departmentId);
     }
 }

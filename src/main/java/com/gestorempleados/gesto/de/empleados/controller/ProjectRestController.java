@@ -35,22 +35,19 @@ public class ProjectRestController {
     @GetMapping
     public ResponseEntity<List<ProjectOutputDTO>> getAllProjects(Sort sort){
 
-        List<ProjectOutputDTO> projectsOutput = projectService.getAllProjects(sort);
-        return ResponseEntity.ok(projectsOutput);
+        return ResponseEntity.ok(projectService.getAllProjects(sort));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ProjectOutputDTO> getProject(@PathVariable Long id) {
 
-        ProjectOutputDTO projectOutput = projectService.getProject(id);
-        return ResponseEntity.ok(projectOutput);
+        return ResponseEntity.ok(projectService.getProject(id));
     }
 
     @PatchMapping("/{id}")
     public ResponseEntity<ProjectOutputDTO> patchProject(@PathVariable Long id, @RequestBody ProjectInputDTO projectInputDTO) {
 
-        ProjectOutputDTO projectOutput = projectService.patchProject(id, projectInputDTO);
-        return ResponseEntity.ok(projectOutput);
+        return ResponseEntity.ok(projectService.patchProject(id, projectInputDTO));
 
     }
 

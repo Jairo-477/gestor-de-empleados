@@ -23,4 +23,5 @@ public class EvaluationInputDTO {
         this.comment = comment;
         this.evaluationDate = evaluationDate;
     }
+
 }

@@ -22,7 +22,7 @@ public class Department {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "department",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "department", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Employee> employeeList;
 
     public Department( String name) {

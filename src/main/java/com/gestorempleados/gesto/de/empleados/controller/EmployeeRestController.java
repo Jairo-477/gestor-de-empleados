@@ -1,6 +1,7 @@
 package com.gestorempleados.gesto.de.empleados.controller;
 
 import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
@@ -41,8 +42,7 @@ public class EmployeeRestController {
     @GetMapping
     public ResponseEntity<Page<EmployeeOutputDTO>> getAllEmployees(Pageable pageable){
 
-        Page<EmployeeOutputDTO> employees = employeeService.getAllEmployees(pageable);
-        return ResponseEntity.ok(employees);
+        return ResponseEntity.ok(employeeService.getAllEmployees(pageable));
     }
 
     @DeleteMapping("/{id}")
@@ -59,14 +59,14 @@ public class EmployeeRestController {
     }
 
     @GetMapping("/evaluations/{id}")
-    public ResponseEntity<Set<Evaluation>> getEvaluations(@PathVariable Long id){
+    public ResponseEntity<Set<EvaluationOutputDTO>> getEvaluations(@PathVariable Long id){
 
-        Set<Evaluation> evaluations = employeeService.getEvaluations(id);
-        return ResponseEntity.ok(evaluations);
+        return ResponseEntity.ok(employeeService.getEvaluations(id));
     }
 
     @GetMapping("/salary/{salary}")
     public List<Employee> FindBySalaryGreaterThan(@PathVariable Double salary){
         return employeeService.findBySalaryGreaterThan(salary);
     }
+
 }
