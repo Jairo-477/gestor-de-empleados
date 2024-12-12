@@ -1,4 +1,4 @@
-# API REST Gesto de Empleados
+# API REST Gestor de Empleados
 
 **Descripción:**  
 El proyecto *Gesto de Empleados* es una aplicación de gestión de empleados utilizando Spring Boot. Permite realizar operaciones CRUD sobre empleados, departamentos, proyectos y evaluaciones. Además, gestiona las relaciones entre estas entidades, como la asignación de empleados a proyectos y departamentos, y la asociación de evaluaciones a empleados.
