@@ -4,8 +4,8 @@
 El proyecto *Gesto de Empleados* es una aplicación de gestión de empleados utilizando Spring Boot. Permite realizar operaciones CRUD sobre empleados, departamentos, proyectos y evaluaciones. Además, gestiona las relaciones entre estas entidades, como la asignación de empleados a proyectos y departamentos, y la asociación de evaluaciones a empleados.
 
 ## Tecnologías utilizadas
-
-- **Spring Boot** (Framework principal)
+- **Java 21** (Lenguaje de programación principal)
+- **Spring Boot 3.3.4** (Framework principal)
 - **Spring Data JPA** (Para la interacción con bases de datos)
 - **MySQL** (Base de datos)
 - **Lombok** (Para reducción de código repetitivo)
