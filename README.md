@@ -10,7 +10,7 @@ El proyecto *Gesto de Empleados* es una aplicación de gestión de empleados uti
 - **MySQL** (Base de datos)
 - **Lombok** (Para reducción de código repetitivo)
 - **Spring Web** (Para la creación de servicios RESTful)
-- **JUnit 5** (Para pruebas unitarias)
+
 
 ## Estructura del Proyecto
 
