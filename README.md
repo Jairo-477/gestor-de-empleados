@@ -26,44 +26,44 @@ El proyecto está dividido en varias capas para una mejor organización del cód
 
 ## Endpoints
 
-### Empleados (`/api/employee`)
+### Empleados (`/api/employees`)
 
-- **POST** `/api/employee`: Crea un nuevo empleado.
-- **GET** `/api/employee/{id}`: Obtiene un empleado por su ID.
-- **GET** `/api/employee`: Obtiene una lista de todos los empleados, soportando paginación.
-- **DELETE** `/api/employee/{id}`: Elimina un empleado por su ID.
-- **PATCH** `/api/employee/{id}`: Actualiza parcialmente un empleado.
-- **GET** `/api/employee/evaluations/{id}`: Obtiene las evaluaciones de un empleado.
-- **GET** `/api/employee/salary/{salary}`: Busca empleados con un salario mayor que el especificado.
+- **POST** `/api/employees`: Crea un nuevo empleado.
+- **GET** `/api/employees/{id}`: Obtiene un empleado por su ID.
+- **GET** `/api/employees`: Obtiene una lista de todos los empleados, soportando paginación.
+- **DELETE** `/api/employees/{id}`: Elimina un empleado por su ID.
+- **PATCH** `/api/employees/{id}`: Actualiza parcialmente un empleado.
+- **GET** `/api/employees/evaluations/{id}`: Obtiene las evaluaciones de un empleado.
+- **GET** `/api/employees/salary/{salary}`: Busca empleados con un salario mayor que el especificado.
 
-### Departamentos (`/api/department`)
+### Departamentos (`/api/departments`)
 
-- **POST** `/api/department`: Crea un nuevo departamento.
-- **GET** `/api/department`: Obtiene todos los departamentos.
-- **GET** `/api/department/{id}`: Obtiene un departamento por su ID.
-- **PATCH** `/api/department/{id}`: Actualiza parcialmente un departamento.
-- **DELETE** `/api/department/{id}`: Elimina un departamento.
-- **GET** `/api/department/employees/{id}`: Obtiene los empleados asignados a un departamento.
-- **PATCH** `/api/department/{employeeId}/{departmentId}`: Asigna un empleado a un departamento.
+- **POST** `/api/departments`: Crea un nuevo departamento.
+- **GET** `/api/departments`: Obtiene todos los departamentos.
+- **GET** `/api/departments/{id}`: Obtiene un departamento por su ID.
+- **PATCH** `/api/departments/{id}`: Actualiza parcialmente un departamento.
+- **DELETE** `/api/departments/{id}`: Elimina un departamento.
+- **GET** `/api/departments/employees/{id}`: Obtiene los empleados asignados a un departamento.
+- **PATCH** `/api/department/{departmentId}/employee/{employeeId}`: Asigna un empleado a un departamento.
 
-### Evaluaciones (`/api/evaluation`)
+### Evaluaciones (`/api/evaluations`)
 
-- **POST** `/api/evaluation`: Crea una nueva evaluación.
-- **GET** `/api/evaluation`: Obtiene todas las evaluaciones.
-- **GET** `/api/evaluation/{id}`: Obtiene una evaluación por su ID.
-- **PATCH** `/api/evaluation/{id}`: Actualiza parcialmente una evaluación.
-- **DELETE** `/api/evaluation/{id}`: Elimina una evaluación.
-- **GET** `/api/evaluation/employee/{id}`: Obtiene todas las evaluaciones de un empleado.
+- **POST** `/api/evaluations`: Crea una nueva evaluación.
+- **GET** `/api/evaluations`: Obtiene todas las evaluaciones.
+- **GET** `/api/evaluations/{id}`: Obtiene una evaluación por su ID.
+- **PATCH** `/api/evaluations/{id}`: Actualiza parcialmente una evaluación.
+- **DELETE** `/api/evaluations/{id}`: Elimina una evaluación.
+- **GET** `/api/evaluations/employee/{id}`: Obtiene todas las evaluaciones de un empleado.
 
-### Proyectos (`/api/project`)
+### Proyectos (`/api/projects`)
 
-- **POST** `/api/project`: Crea un nuevo proyecto.
-- **GET** `/api/project`: Obtiene todos los proyectos.
-- **GET** `/api/project/{id}`: Obtiene un proyecto por su ID.
-- **PATCH** `/api/project/{id}`: Actualiza parcialmente un proyecto.
-- **DELETE** `/api/project/{id}`: Elimina un proyecto.
-- **PATCH** `/api/project/{projectId}/{employeeId}`: Asigna un empleado a un proyecto.
-- **GET** `/api/project/employees/{id}`: Obtiene los empleados asignados a un proyecto.
+- **POST** `/api/projects`: Crea un nuevo proyecto.
+- **GET** `/api/projects`: Obtiene todos los proyectos.
+- **GET** `/api/projects/{id}`: Obtiene un proyecto por su ID.
+- **PATCH** `/api/projects/{id}`: Actualiza parcialmente un proyecto.
+- **DELETE** `/api/projects/{id}`: Elimina un proyecto.
+- **PATCH** `/api/projects/{projectId}/employee/{employeeId}`: Asigna un empleado a un proyecto.
+- **GET** `/api/projects/employees/{id}`: Obtiene los empleados asignados a un proyecto.
   
 ## Configuración de la Base de Datos
 
