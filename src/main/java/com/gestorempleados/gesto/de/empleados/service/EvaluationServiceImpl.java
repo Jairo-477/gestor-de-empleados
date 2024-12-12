@@ -7,11 +7,12 @@ import com.gestorempleados.gesto.de.empleados.model.Evaluation;
 import com.gestorempleados.gesto.de.empleados.repository.EvaluationRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class EvaluationServiceImpl implements EvaluationService{
 
     private final EvaluationRepository evaluationRepository;
@@ -103,6 +104,16 @@ public class EvaluationServiceImpl implements EvaluationService{
     }
 
     @Override
-    public List<EvaluationOutputDTO> getAllEvaluationsByEmployee(Long id) {
+    public List<Evaluation> findAllEvaluationsByEmployeeId(Long id) {
+
+        if (id == null){
+            throw new IllegalArgumentException("Evaluation ID cannot be null.");
+        }
+
+        if (!evaluationRepository.existsById(id)){
+            throw new EntityNotFoundException("Evaluation with ID " + id + " not found");
+        }
+
+        return evaluationRepository.findAllEvaluationsByEmployeeId(id);
     }
 }

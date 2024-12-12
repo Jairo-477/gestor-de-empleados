@@ -36,26 +36,26 @@ public class DepartmentRestController {
         return ResponseEntity.ok(departments);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<DepartmentOutputDTO> getDepartment(@PathVariable Long id) {
 
         return ResponseEntity.ok(departmentService.getDepartment(id));
     }
 
-    @PatchMapping("/id")
+    @PatchMapping("/{id}")
     public ResponseEntity<DepartmentOutputDTO> patchDepartment(@PathVariable Long id,@RequestBody  DepartmentInputDTO departmentInputDTO) {
 
         return ResponseEntity.ok(departmentService.patchDepartment(id, departmentInputDTO));
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteDepartment(@PathVariable Long id){
 
         departmentService.deleteDepartment(id);
         return ResponseEntity.ok("Department " + id + " was deleted");
     }
 
-    @GetMapping("employees/id")
+    @GetMapping("employees/{id}")
     public ResponseEntity<List<EmployeeOutputDTO>> getEmployeesByDepartment(@PathVariable Long id){
 
         return ResponseEntity.ok(departmentService.getEmployeesByDepartment(id));

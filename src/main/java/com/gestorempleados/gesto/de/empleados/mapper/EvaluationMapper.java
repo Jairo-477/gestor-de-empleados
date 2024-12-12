@@ -3,7 +3,9 @@ package com.gestorempleados.gesto.de.empleados.mapper;
 import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EvaluationMapper {
 
     public EvaluationOutputDTO toDto(Evaluation evaluation){
