@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api/employee")
+@RequestMapping("/api/employees")
 public class EmployeeRestController {
 
     private final EmployeeService employeeService;
@@ -64,8 +64,8 @@ public class EmployeeRestController {
         return ResponseEntity.ok(employeeService.getEvaluations(id));
     }
 
-    @GetMapping("/salary/{salary}")
-    public List<Employee> FindBySalaryGreaterThan(@PathVariable Double salary){
+    @GetMapping("/salary")
+    public List<Employee> FindBySalaryGreaterThan(@RequestParam Double salary){
         return employeeService.findBySalaryGreaterThan(salary);
     }
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/department")
+@RequestMapping("/api/departments")
 public class DepartmentRestController {
 
     private final DepartmentService departmentService;
@@ -59,7 +59,7 @@ public class DepartmentRestController {
         return ResponseEntity.ok(departmentService.getEmployeesByDepartment(id));
     }
 
-    @PatchMapping("/{employeeId}/{departmentId}")
+    @PatchMapping("/{departmentId}/employee/{employeeId}")
     public ResponseEntity<String> addEmployeeInDepartment(@PathVariable Long employeeId,@PathVariable Long departmentId) {
 
         departmentService.addEmployeeInDepartment(employeeId,departmentId);

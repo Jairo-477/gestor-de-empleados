@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,9 +48,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public List<DepartmentOutputDTO> getAllDepartments(Sort sort) {
 
-        if (sort == null){
-            throw new IllegalArgumentException("Sort parameter cannot be null.");
-        }
+        Objects.requireNonNull(sort, "Sort parameter cannot be null.");
 
         List<Department> departments = departmentRepository.findAll(sort);
 
@@ -61,9 +60,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentOutputDTO getDepartment(Long id) {
 
-        if (id == null){
-            throw new IllegalArgumentException("Department ID cannot be null.");
-        }
+        Objects.requireNonNull(id, "Department ID cannot be null.");
 
         return departmentRepository.findById(id)
                 .map(departmentMapper::toDto)
@@ -73,12 +70,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public DepartmentOutputDTO patchDepartment(Long id, DepartmentInputDTO departmentInputDTO) {
 
-        if (id == null){
-            throw new IllegalArgumentException("Department ID cannot be null.");
-        }
-        if (departmentInputDTO == null){
-            throw new IllegalArgumentException("Department input data cannot be null.");
-        }
+        Objects.requireNonNull(id, "Department ID cannot be null.");
+
+        Objects.requireNonNull(departmentInputDTO, "Department input data cannot be null.");
 
         Department existingDepartment = departmentRepository.findById(id)
                 .orElseThrow(()-> new EntityNotFoundException("Department with ID " + id + " not found"));
@@ -96,9 +90,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public void deleteDepartment(Long id) {
 
-        if (id == null){
-            throw new IllegalArgumentException("Department ID cannot be null.");
-        }
+        Objects.requireNonNull(id, "Department ID cannot be null.");
 
         Department department = departmentRepository.findById(id)
                 .orElseThrow(()-> new EntityNotFoundException("Department with ID " + id + " not found"));
@@ -115,9 +107,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public List<EmployeeOutputDTO> getEmployeesByDepartment(Long id) {
 
-        if (id == null){
-            throw new IllegalArgumentException("Department ID cannot be null.");
-        }
+        Objects.requireNonNull(id, "Department ID cannot be null.");
 
         Department department = departmentRepository.findById(id)
                 .orElseThrow(()->new EntityNotFoundException("Department with ID "  + id + " not found"));
@@ -131,12 +121,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public void addEmployeeInDepartment(Long employeeId, Long departmentId) {
 
-        if (employeeId == null){
-            throw new IllegalArgumentException("Employee ID cannot be null.");
-        }
-        if (departmentId == null){
-            throw new IllegalArgumentException("Department ID cannot be null.");
-        }
+        Objects.requireNonNull(employeeId, "Employee ID cannot be null.");
+
+        Objects.requireNonNull(departmentId, "Department ID cannot be null.");
 
         Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(()-> new EntityNotFoundException("Employee with ID "  + employeeId + " not found"));

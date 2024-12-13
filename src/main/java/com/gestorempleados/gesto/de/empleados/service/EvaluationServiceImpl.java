@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,7 +36,8 @@ public class EvaluationServiceImpl implements EvaluationService{
                 .orElseThrow(()-> new EntityNotFoundException("Employee not found with ID: " + evaluationInputDTO.getEmployee().getId()));
 
         Evaluation evaluation = new Evaluation(
-                employee,evaluationInputDTO.getQualification(),
+                employee,
+                evaluationInputDTO.getQualification(),
                 evaluationInputDTO.getComment(),
                 evaluationInputDTO.getEvaluationDate()
         );
@@ -48,9 +50,7 @@ public class EvaluationServiceImpl implements EvaluationService{
     @Override
     public List<EvaluationOutputDTO> getAllEvaluations(Sort sort) {
 
-        if (sort == null){
-            throw new IllegalArgumentException("Sort parameter cannot be null.");
-        }
+        Objects.requireNonNull(sort, "Sort parameter cannot be null.");
 
         List<Evaluation> evaluations = evaluationRepository.findAll(sort);
 
@@ -62,9 +62,7 @@ public class EvaluationServiceImpl implements EvaluationService{
     @Override
     public EvaluationOutputDTO getEvaluation(Long id) {
 
-        if (id == null){
-            throw new IllegalArgumentException("Evaluation ID cannot be null.");
-        }
+        Objects.requireNonNull(id, "Evaluation ID cannot be null.");
 
         return evaluationRepository.findById(id)
                 .map(evaluationMapper::toDto)
@@ -74,12 +72,9 @@ public class EvaluationServiceImpl implements EvaluationService{
     @Override
     public EvaluationOutputDTO patchEvaluation(Long id, EvaluationInputDTO evaluationInputDTO) {
 
-        if (id == null){
-            throw new IllegalArgumentException("Evaluation ID cannot be null.");
-        }
-        if (evaluationInputDTO == null){
-            throw new IllegalArgumentException("Project input data cannot be null.");
-        }
+        Objects.requireNonNull(id, "Evaluation ID cannot be null.");
+
+        Objects.requireNonNull(evaluationInputDTO, "Project input data cannot be null.");
 
         Evaluation existingEvaluation = evaluationRepository.findById(id)
                 .orElseThrow(()-> new EntityNotFoundException("Evaluation with ID " + id + " not found"));
@@ -106,9 +101,7 @@ public class EvaluationServiceImpl implements EvaluationService{
     @Override
     public void deleteEvaluation(Long id) {
 
-        if (id == null){
-            throw new IllegalArgumentException("Evaluation ID cannot be null.");
-        }
+        Objects.requireNonNull(id, "Evaluation ID cannot be null.");
 
         if (!evaluationRepository.existsById(id)){
             throw new EntityNotFoundException("Evaluation with ID " + id + " not found");
@@ -120,9 +113,7 @@ public class EvaluationServiceImpl implements EvaluationService{
     @Override
     public List<Evaluation> findAllEvaluationsByEmployeeId(Long id) {
 
-        if (id == null){
-            throw new IllegalArgumentException("Evaluation ID cannot be null.");
-        }
+        Objects.requireNonNull(id, "Evaluation ID cannot be null.");
 
         if (!evaluationRepository.existsById(id)){
             throw new EntityNotFoundException("Evaluation with ID " + id + " not found");

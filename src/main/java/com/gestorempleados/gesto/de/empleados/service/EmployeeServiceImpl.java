@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -55,9 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
         public void deleteEmployee(Long id){
 
-        if (id == null){
-            throw new IllegalArgumentException("Employee ID cannot be null.");
-        }
+        Objects.requireNonNull(id, "Employee ID cannot be null.");
 
         if (!employeeRepository.existsById(id)){
             throw new EntityNotFoundException("Employee with ID " + id + " not found");
@@ -76,12 +75,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeOutputDTO patchEmployee(Long id, EmployeeInputDTO employeeInputDTO){
 
-        if (id == null){
-            throw new IllegalArgumentException("Employee ID cannot be null.");
-        }
-        if (employeeInputDTO == null){
-            throw new IllegalArgumentException("Employee input data cannot be null.");
-        }
+        Objects.requireNonNull(id, "Employee ID cannot be null.");
+
+        Objects.requireNonNull(employeeInputDTO, "Employee input data cannot be null.");
 
         Employee existingEmployee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
@@ -110,9 +106,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Set<EvaluationOutputDTO> getEvaluations (Long id){
 
-        if (id == null){
-            throw new IllegalArgumentException("Employee ID cannot be null.");
-        }
+        Objects.requireNonNull(id, "Employee ID cannot be null.");
 
         Employee existingEmployee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
@@ -125,9 +119,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> findBySalaryGreaterThan(Double salary){
 
-        if (salary == null){
-            throw new IllegalArgumentException("The value cannot be null");
-        }
+        Objects.requireNonNull(salary, "The value cannot be null.");
 
         return employeeRepository.findBySalaryGreaterThan(salary);
     };
