@@ -12,14 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class DepartmentInputDTO {
 
-    private Long id;
     private String name;
-    private Set<Employee> employeeList;
-
-    public DepartmentInputDTO(String name, Set<Employee> employeeList) {
-        this.name = name;
-        this.employeeList = employeeList;
-    }
 
     public DepartmentInputDTO(String name) {
         this.name = name;

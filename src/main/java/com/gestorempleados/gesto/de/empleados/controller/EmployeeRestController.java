@@ -6,6 +6,7 @@ import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
 import com.gestorempleados.gesto.de.empleados.service.EmployeeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/employees")
+@Tag( name = "Employee ", description = "Controller for Employee")
 public class EmployeeRestController {
 
     private final EmployeeService employeeService;

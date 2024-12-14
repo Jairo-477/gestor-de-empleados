@@ -1,5 +1,6 @@
 package com.gestorempleados.gesto.de.empleados.dto.input;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,9 +1,12 @@
 package com.gestorempleados.gesto.de.empleados.controller;
 
+import com.gestorempleados.gesto.de.empleados.controller.controllerDoc.DepartmentRestControllerDoc;
 import com.gestorempleados.gesto.de.empleados.dto.input.DepartmentOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.DepartmentInputDTO;
 import com.gestorempleados.gesto.de.empleados.service.DepartmentService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +16,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/departments")
-public class DepartmentRestController {
+@Tag( name = "Department ", description = "Controller for Department")
+public class DepartmentRestController implements DepartmentRestControllerDoc {
 
     private final DepartmentService departmentService;
 

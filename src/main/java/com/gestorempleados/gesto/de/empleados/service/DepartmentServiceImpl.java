@@ -64,7 +64,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         return departmentRepository.findById(id)
                 .map(departmentMapper::toDto)
-                .orElseThrow(()-> new EntityNotFoundException("Employee with ID " + id + " not found"));
+                .orElseThrow(()-> new EntityNotFoundException("Department with ID " + id + " not found"));
     }
 
     @Override

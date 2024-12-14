@@ -4,6 +4,7 @@ import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.input.ProjectOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.ProjectInputDTO;
 import com.gestorempleados.gesto.de.empleados.service.ProjectService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/projects")
+@Tag( name = "Project ", description = "Controller for Project")
 public class ProjectRestController {
 
     private final ProjectService projectService;

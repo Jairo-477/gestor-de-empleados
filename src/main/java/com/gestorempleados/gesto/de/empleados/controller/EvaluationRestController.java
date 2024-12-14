@@ -5,6 +5,7 @@ import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
 import com.gestorempleados.gesto.de.empleados.repository.EvaluationRepository;
 import com.gestorempleados.gesto.de.empleados.service.EvaluationService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/evaluations")
+@Tag( name = "Evaluation ", description = "Controller for Evaluation")
 public class EvaluationRestController {
 
     private final EvaluationService evaluationService;
