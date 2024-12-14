@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -44,9 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeOutputDTO getEmployee(Long id){
 
-        if (id == null){
-            throw new IllegalArgumentException("Employee ID cannot be null.");
-        }
+        Objects.requireNonNull(id,"Employee ID cannot be null.");
 
         return employeeRepository.findById(id)
                 .map(employeeMapper::toDto)
@@ -54,7 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-        public void deleteEmployee(Long id){
+    public void deleteEmployee(Long id){
 
         Objects.requireNonNull(id, "Employee ID cannot be null.");
 
@@ -117,10 +116,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> findBySalaryGreaterThan(Double salary){
+    public List<EmployeeOutputDTO> findBySalaryGreaterThan(Double salary){
 
         Objects.requireNonNull(salary, "The value cannot be null.");
 
-        return employeeRepository.findBySalaryGreaterThan(salary);
+        List<Employee> employees = employeeRepository.findBySalaryGreaterThan(salary);
+
+        return employees.stream().map(employeeMapper::toDto).collect(Collectors.toList());
     };
 }

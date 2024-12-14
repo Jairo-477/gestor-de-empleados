@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 import java.util.List;
-import java.util.Locale;
+
 
 public interface DepartmentRestControllerDoc {
 
     @Operation(
-            summary = "create department",
+            summary = "Create department",
             description = "The method creates a new department by receiving an inputDTO as a parameter.",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     description = "Requires the department name",

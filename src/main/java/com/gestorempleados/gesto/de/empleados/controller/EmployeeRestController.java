@@ -1,5 +1,6 @@
 package com.gestorempleados.gesto.de.empleados.controller;
 
+import com.gestorempleados.gesto.de.empleados.controller.controllerDoc.EmployeeRestControllerDoc;
 import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
@@ -19,7 +20,7 @@ import java.util.Set;
 @RestController
 @RequestMapping("/api/employees")
 @Tag( name = "Employee ", description = "Controller for Employee")
-public class EmployeeRestController {
+public class EmployeeRestController implements EmployeeRestControllerDoc {
 
     private final EmployeeService employeeService;
 
@@ -67,7 +68,7 @@ public class EmployeeRestController {
     }
 
     @GetMapping("/salary")
-    public List<Employee> FindBySalaryGreaterThan(@RequestParam Double salary){
+    public List<EmployeeOutputDTO> FindBySalaryGreaterThan(@RequestParam Double salary){
         return employeeService.findBySalaryGreaterThan(salary);
     }
 

@@ -16,7 +16,7 @@ import java.util.Set;
 
 public interface EmployeeService {
 
-    List<Employee> findBySalaryGreaterThan(Double salary);
+    List<EmployeeOutputDTO> findBySalaryGreaterThan(Double salary);
 
     EmployeeOutputDTO createEmployee (EmployeeInputDTO employeeInputDTO);
 
