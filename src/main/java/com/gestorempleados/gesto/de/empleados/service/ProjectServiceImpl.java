@@ -74,7 +74,7 @@ public class ProjectServiceImpl implements ProjectService {
         Objects.requireNonNull(projectInputDTO, "Project input data cannot be null.");
 
         Project existingProject = projectRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Employee with ID " + id + " not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Project with ID " + id + " not found"));
 
         if(projectInputDTO.getName() != null){
             existingProject.setName(projectInputDTO.getName());

@@ -1,5 +1,6 @@
 package com.gestorempleados.gesto.de.empleados.controller;
 
+import com.gestorempleados.gesto.de.empleados.controller.controllerDoc.ProjectRestControllerDoc;
 import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.input.ProjectOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.ProjectInputDTO;
@@ -16,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/projects")
 @Tag( name = "Project ", description = "Controller for Project")
-public class ProjectRestController {
+public class ProjectRestController implements ProjectRestControllerDoc {
 
     private final ProjectService projectService;
 
