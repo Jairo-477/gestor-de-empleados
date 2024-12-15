@@ -10,8 +10,20 @@ El proyecto *Gesto de Empleados* es una aplicación de gestión de empleados uti
 - **MySQL** (Base de datos)
 - **Lombok** (Para reducción de código repetitivo)
 - **Spring Web** (Para la creación de servicios RESTful)
+- **Springdoc OpenAPI** (Para la generación de documentación interactiva con Swagger)
 
 
+## Documentación de la API
+
+El proyecto incluye una documentación interactiva mediante **Swagger (OpenAPI)**. Esto permite explorar y probar los endpoints de la API de manera sencilla.
+
+### Acceso a Swagger UI
+
+Una vez iniciado el proyecto, puedes acceder a la documentación interactiva en la siguiente URL:
+
+```bash
+http://localhost:8080/swagger-ui.html
+```
 ## Estructura del Proyecto
 
 El proyecto está dividido en varias capas para una mejor organización del código:
