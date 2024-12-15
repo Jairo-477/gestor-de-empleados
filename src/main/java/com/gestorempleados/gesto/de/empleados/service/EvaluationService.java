@@ -19,5 +19,5 @@ public interface EvaluationService{
 
     void deleteEvaluation (Long id);
 
-    List<Evaluation> findAllEvaluationsByEmployeeId(Long id);
+    List<EvaluationOutputDTO> findAllEvaluationsByEmployeeId(Long id);
 }

@@ -103,7 +103,8 @@ public interface DepartmentRestControllerDoc {
             parameters = {
                     @Parameter(
                             name = "id",
-                            description = "The unique ID of the department to retrieve. This ID corresponds to an existing department in the system.",
+                            description = "The unique ID of the department to retrieve. This ID corresponds to an " +
+                                    "existing department in the system.",
                             example = "2",
                             in = ParameterIn.PATH
                     )

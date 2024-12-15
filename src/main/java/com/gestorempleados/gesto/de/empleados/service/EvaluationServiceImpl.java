@@ -111,7 +111,7 @@ public class EvaluationServiceImpl implements EvaluationService{
     }
 
     @Override
-    public List<Evaluation> findAllEvaluationsByEmployeeId(Long id) {
+    public List<EvaluationOutputDTO> findAllEvaluationsByEmployeeId(Long id) {
 
         Objects.requireNonNull(id, "Evaluation ID cannot be null.");
 
@@ -119,6 +119,8 @@ public class EvaluationServiceImpl implements EvaluationService{
             throw new EntityNotFoundException("Evaluation with ID " + id + " not found");
         }
 
-        return evaluationRepository.findAllEvaluationsByEmployeeId(id);
+        List<Evaluation> evaluations = evaluationRepository.findAllEvaluationsByEmployeeId(id);
+
+        return evaluations.stream().map(evaluationMapper::toDto).collect(Collectors.toList());
     }
 }

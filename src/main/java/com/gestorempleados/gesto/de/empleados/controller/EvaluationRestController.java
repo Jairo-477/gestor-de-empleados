@@ -1,5 +1,6 @@
 package com.gestorempleados.gesto.de.empleados.controller;
 
+import com.gestorempleados.gesto.de.empleados.controller.controllerDoc.EvaluationRestControllerDoc;
 import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
 import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
@@ -16,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/evaluations")
 @Tag( name = "Evaluation ", description = "Controller for Evaluation")
-public class EvaluationRestController {
+public class EvaluationRestController implements EvaluationRestControllerDoc {
 
     private final EvaluationService evaluationService;
 
@@ -25,7 +26,7 @@ public class EvaluationRestController {
     }
 
     @PostMapping
-    ResponseEntity<EvaluationOutputDTO> createEvaluation (@RequestBody EvaluationInputDTO evaluationInputDTO){
+    public ResponseEntity<EvaluationOutputDTO> createEvaluation (@RequestBody EvaluationInputDTO evaluationInputDTO){
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(evaluationService.createEvaluation(evaluationInputDTO));
@@ -57,7 +58,7 @@ public class EvaluationRestController {
     }
 
     @GetMapping("/employee/{id}")
-    public ResponseEntity<List<Evaluation>> findAllEvaluationsByEmployeeId(@PathVariable Long id) {
+    public ResponseEntity<List<EvaluationOutputDTO>> findAllEvaluationsByEmployeeId(@PathVariable Long id) {
 
         return ResponseEntity.ok(evaluationService.findAllEvaluationsByEmployeeId(id));
     }
