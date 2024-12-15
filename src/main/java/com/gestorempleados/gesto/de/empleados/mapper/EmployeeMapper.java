@@ -1,9 +1,9 @@
 package com.gestorempleados.gesto.de.empleados.mapper;
 
 
-import com.gestorempleados.gesto.de.empleados.dto.input.DepartmentOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.DepartmentOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
 import org.springframework.stereotype.Component;
 

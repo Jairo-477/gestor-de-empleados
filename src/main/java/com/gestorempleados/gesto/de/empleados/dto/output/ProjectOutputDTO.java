@@ -1,4 +1,4 @@
-package com.gestorempleados.gesto.de.empleados.dto.input;
+package com.gestorempleados.gesto.de.empleados.dto.output;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

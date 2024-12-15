@@ -1,8 +1,8 @@
 package com.gestorempleados.gesto.de.empleados.service;
 
-import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.mapper.EmployeeMapper;
 import com.gestorempleados.gesto.de.empleados.mapper.EvaluationMapper;
 import com.gestorempleados.gesto.de.empleados.model.Employee;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 

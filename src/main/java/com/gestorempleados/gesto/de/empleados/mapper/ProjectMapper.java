@@ -1,7 +1,7 @@
 package com.gestorempleados.gesto.de.empleados.mapper;
 
-import com.gestorempleados.gesto.de.empleados.dto.input.ProjectOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.ProjectInputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.ProjectOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.ProjectInputDTO;
 import com.gestorempleados.gesto.de.empleados.model.Project;
 import org.springframework.stereotype.Component;
 

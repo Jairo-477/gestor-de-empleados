@@ -1,14 +1,12 @@
 package com.gestorempleados.gesto.de.empleados.controller.controllerDoc;
 
-import com.gestorempleados.gesto.de.empleados.dto.input.DepartmentOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
-import com.gestorempleados.gesto.de.empleados.model.Employee;
+import com.gestorempleados.gesto.de.empleados.dto.output.DepartmentOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeInputDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
-import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;

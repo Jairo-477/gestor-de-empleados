@@ -1,8 +1,8 @@
 package com.gestorempleados.gesto.de.empleados.service;
 
-import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.input.ProjectOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.ProjectInputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.ProjectOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.ProjectInputDTO;
 import com.gestorempleados.gesto.de.empleados.mapper.EmployeeMapper;
 import com.gestorempleados.gesto.de.empleados.mapper.ProjectMapper;
 import com.gestorempleados.gesto.de.empleados.model.Employee;

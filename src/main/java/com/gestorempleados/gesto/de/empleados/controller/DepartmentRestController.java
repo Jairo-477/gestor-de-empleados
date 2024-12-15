@@ -1,9 +1,9 @@
 package com.gestorempleados.gesto.de.empleados.controller;
 
 import com.gestorempleados.gesto.de.empleados.controller.controllerDoc.DepartmentRestControllerDoc;
-import com.gestorempleados.gesto.de.empleados.dto.input.DepartmentOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.DepartmentInputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.DepartmentOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.DepartmentInputDTO;
 import com.gestorempleados.gesto.de.empleados.service.DepartmentService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;

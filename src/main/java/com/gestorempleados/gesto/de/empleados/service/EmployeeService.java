@@ -1,11 +1,8 @@
 package com.gestorempleados.gesto.de.empleados.service;
 
-import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
-import com.gestorempleados.gesto.de.empleados.model.Employee;
-import com.gestorempleados.gesto.de.empleados.model.Evaluation;
-import com.gestorempleados.gesto.de.empleados.model.Project;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeInputDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

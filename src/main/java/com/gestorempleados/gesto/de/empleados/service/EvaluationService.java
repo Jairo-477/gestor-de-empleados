@@ -1,8 +1,7 @@
 package com.gestorempleados.gesto.de.empleados.service;
 
-import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationInputDTO;
-import com.gestorempleados.gesto.de.empleados.model.Evaluation;
+import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationInputDTO;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;

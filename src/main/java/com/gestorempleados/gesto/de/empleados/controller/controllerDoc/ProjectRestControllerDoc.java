@@ -1,10 +1,9 @@
 package com.gestorempleados.gesto.de.empleados.controller.controllerDoc;
 
-import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.input.ProjectOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationInputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.ProjectInputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.ProjectOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.ProjectInputDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;

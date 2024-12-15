@@ -1,6 +1,5 @@
-package com.gestorempleados.gesto.de.empleados.dto.input;
+package com.gestorempleados.gesto.de.empleados.dto.output;
 
-import com.gestorempleados.gesto.de.empleados.model.Department;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

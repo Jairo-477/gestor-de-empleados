@@ -1,11 +1,9 @@
 package com.gestorempleados.gesto.de.empleados.controller;
 
 import com.gestorempleados.gesto.de.empleados.controller.controllerDoc.EmployeeRestControllerDoc;
-import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeInputDTO;
-import com.gestorempleados.gesto.de.empleados.model.Employee;
-import com.gestorempleados.gesto.de.empleados.model.Evaluation;
+import com.gestorempleados.gesto.de.empleados.dto.output.EmployeeOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EmployeeInputDTO;
 import com.gestorempleados.gesto.de.empleados.service.EmployeeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

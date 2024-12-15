@@ -10,19 +10,18 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-public class EvaluationOutputDTO {
+public class EvaluationInputDTO {
 
-    private Long evaluationId;
-    private Long employeeId;
+    private Employee employee;
     private Integer qualification;
     private String comment;
     private LocalDate evaluationDate;
 
-    public EvaluationOutputDTO(Long evaluationId,Long employeeId, Integer qualification, String comment, LocalDate evaluationDate) {
-        this.evaluationId = evaluationId;
-        this.employeeId = employeeId;
+    public EvaluationInputDTO(Employee employee, Integer qualification, String comment, LocalDate evaluationDate) {
+        this.employee = employee;
         this.qualification = qualification;
         this.comment = comment;
         this.evaluationDate = evaluationDate;
     }
+
 }

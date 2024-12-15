@@ -1,10 +1,8 @@
 package com.gestorempleados.gesto.de.empleados.controller;
 
 import com.gestorempleados.gesto.de.empleados.controller.controllerDoc.EvaluationRestControllerDoc;
-import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationOutputDTO;
-import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationInputDTO;
-import com.gestorempleados.gesto.de.empleados.model.Evaluation;
-import com.gestorempleados.gesto.de.empleados.repository.EvaluationRepository;
+import com.gestorempleados.gesto.de.empleados.dto.output.EvaluationOutputDTO;
+import com.gestorempleados.gesto.de.empleados.dto.input.EvaluationInputDTO;
 import com.gestorempleados.gesto.de.empleados.service.EvaluationService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Sort;

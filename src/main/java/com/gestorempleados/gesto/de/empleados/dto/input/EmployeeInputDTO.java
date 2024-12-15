@@ -1,4 +1,4 @@
-package com.gestorempleados.gesto.de.empleados.dto.output;
+package com.gestorempleados.gesto.de.empleados.dto.input;
 
 import com.gestorempleados.gesto.de.empleados.model.Department;
 import com.gestorempleados.gesto.de.empleados.model.Evaluation;
